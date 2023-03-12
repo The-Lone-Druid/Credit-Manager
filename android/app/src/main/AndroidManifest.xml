@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.react_native_bare_workflow_boilerplate">
+  package="com.creditManager">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

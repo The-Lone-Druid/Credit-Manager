@@ -1,4 +1,4 @@
-package com.react_native_bare_workflow_boilerplate.newarchitecture.components;
+package com.creditManager.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

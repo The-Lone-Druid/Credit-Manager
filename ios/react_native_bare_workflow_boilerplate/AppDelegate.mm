@@ -44,7 +44,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 #endif
 
   NSDictionary *initProps = [self prepareInitialProps];
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"react_native_bare_workflow_boilerplate", initProps);
+  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"creditManager", initProps);
 
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor systemBackgroundColor];

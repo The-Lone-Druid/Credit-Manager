@@ -1,4 +1,4 @@
-package com.react_native_bare_workflow_boilerplate.newarchitecture;
+package com.creditManager.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.react_native_bare_workflow_boilerplate.BuildConfig;
-import com.react_native_bare_workflow_boilerplate.newarchitecture.components.MainComponentsRegistry;
-import com.react_native_bare_workflow_boilerplate.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.creditManager.BuildConfig;
+import com.creditManager.newarchitecture.components.MainComponentsRegistry;
+import com.creditManager.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

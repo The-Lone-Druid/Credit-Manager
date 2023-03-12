@@ -1,4 +1,4 @@
-package com.react_native_bare_workflow_boilerplate;
+package com.creditManager;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -12,7 +12,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "react_native_bare_workflow_boilerplate";
+    return "creditManager";
   }
 
   /**
