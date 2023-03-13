@@ -90,7 +90,7 @@ const LoginScreen = (props: Props) => {
                 style={[tw`text-right mt-2`, {color: theme.colors.primary}]}
                 variant={'labelLarge'}
                 onPress={() => {
-                  navigation.navigate('ResetPassword');
+                  navigation.navigate('ForgotPassword');
                 }}>
                 Forgot password?
               </Text>
@@ -100,6 +100,7 @@ const LoginScreen = (props: Props) => {
           <View style={tw`mt-5`}>
             <Button
               mode="contained"
+              style={tw`py-1 rounded-full`}
               icon={'login'}
               onPress={loginForm.handleSubmit}>
               Login

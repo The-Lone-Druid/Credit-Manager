@@ -33,15 +33,15 @@ const App = () => {
       },
       titleLarge: {
         ...MD3LightTheme.fonts.titleLarge,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       titleMedium: {
         ...MD3LightTheme.fonts.titleMedium,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       titleSmall: {
         ...MD3LightTheme.fonts.titleSmall,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       displayLarge: {
         ...MD3LightTheme.fonts.displayLarge,
@@ -57,27 +57,27 @@ const App = () => {
       },
       labelLarge: {
         ...MD3LightTheme.fonts.labelLarge,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       labelMedium: {
         ...MD3LightTheme.fonts.labelMedium,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       labelSmall: {
         ...MD3LightTheme.fonts.labelSmall,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       bodyLarge: {
         ...MD3LightTheme.fonts.bodyLarge,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       bodyMedium: {
         ...MD3LightTheme.fonts.bodyMedium,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       bodySmall: {
         ...MD3LightTheme.fonts.bodySmall,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Regular',
       },
       headlineLarge: {
         ...MD3LightTheme.fonts.headlineLarge,
