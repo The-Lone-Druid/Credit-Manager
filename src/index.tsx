@@ -1,33 +1,53 @@
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {Button, Card, Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import ForgotPasswordScreen from './screens/forgot-password';
+import HomeScreen from './screens/home';
+import LoginScreen from './screens/login';
+import ProfileScreen from './screens/profile';
+import ResetPasswordScreen from './screens/reset-password';
+import SettingsScreen from './screens/settings';
+import SignupScreen from './screens/signup';
 
 type Props = {};
 
+const Stack = createNativeStackNavigator();
+
 const RootNavigation = (props: Props) => {
+  const [state] = React.useState<null | any>();
+
   return (
-    <SafeAreaView>
-      <Card style={{margin: 10}}>
-        <Card.Title
-          title="Credit Manager App"
-          subtitle={'Development in progress...'}
-          titleVariant={'titleLarge'}
-        />
-        <Card.Content>
-          <Text>
-            Hey there, Credit manager app will be back soon with a lot of
-            amazing featuers which will help track the Credits given to the
-            parties while their purchases. Also this app will help to find
-            parties that are delaying payments, will also show overall credits
-            given to all the parties combined.
-          </Text>
-        </Card.Content>
-        <Card.Actions>
-          <Button mode="outlined" onPress={() => {}} icon={'bell'}>
-            Notify Me
-          </Button>
-        </Card.Actions>
-      </Card>
+    <SafeAreaView style={{flex: 1}}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
+        {/**
+         * Checks if users state is persisted in the secure storage
+         * and based on that it'll either display the auth screens
+         * or it'll display the authenticated screens.
+         */}
+        {!state?.userToken ? (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Signup" component={SignupScreen} />
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPasswordScreen}
+            />
+            <Stack.Screen
+              name="ResetPassword"
+              component={ResetPasswordScreen}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Profile" component={ProfileScreen} />
+            <Stack.Screen name="Settings" component={SettingsScreen} />
+          </>
+        )}
+      </Stack.Navigator>
     </SafeAreaView>
   );
 };

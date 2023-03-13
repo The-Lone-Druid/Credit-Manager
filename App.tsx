@@ -29,7 +29,7 @@ const App = () => {
     fonts: {
       default: {
         ...MD3LightTheme.fonts.default,
-        fontFamily: 'Poppins-Regular',
+        fontFamily: 'Poppins-Medium',
       },
       titleLarge: {
         ...MD3LightTheme.fonts.titleLarge,
@@ -45,15 +45,15 @@ const App = () => {
       },
       displayLarge: {
         ...MD3LightTheme.fonts.displayLarge,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Bold',
       },
       displayMedium: {
         ...MD3LightTheme.fonts.displayMedium,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Bold',
       },
       displaySmall: {
         ...MD3LightTheme.fonts.displaySmall,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Bold',
       },
       labelLarge: {
         ...MD3LightTheme.fonts.labelLarge,
@@ -81,15 +81,15 @@ const App = () => {
       },
       headlineLarge: {
         ...MD3LightTheme.fonts.headlineLarge,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Bold',
       },
       headlineMedium: {
         ...MD3LightTheme.fonts.headlineMedium,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Bold',
       },
       headlineSmall: {
         ...MD3LightTheme.fonts.headlineSmall,
-        fontFamily: 'Poppins-SemiBold',
+        fontFamily: 'Poppins-Bold',
       },
     },
   };
