@@ -33,15 +33,15 @@ const App = () => {
       },
       titleLarge: {
         ...MD3LightTheme.fonts.titleLarge,
-        fontFamily: 'Poppins-Regular',
+        fontFamily: 'Poppins-Bold',
       },
       titleMedium: {
         ...MD3LightTheme.fonts.titleMedium,
-        fontFamily: 'Poppins-Regular',
+        fontFamily: 'Poppins-Bold',
       },
       titleSmall: {
         ...MD3LightTheme.fonts.titleSmall,
-        fontFamily: 'Poppins-Regular',
+        fontFamily: 'Poppins-Bold',
       },
       displayLarge: {
         ...MD3LightTheme.fonts.displayLarge,

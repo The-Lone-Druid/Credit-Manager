@@ -1,5 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
+import tw from 'twrnc';
+import {useColorScheme, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import ForgotPasswordScreen from './screens/forgot-password';
 import HomeScreen from './screens/home';
@@ -15,15 +17,18 @@ const Stack = createNativeStackNavigator();
 
 const RootNavigation = (props: Props) => {
   const [state] = React.useState<null | any>();
+  const isDarkMode = useColorScheme();
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={tw`flex-1`}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
+          contentStyle: {
+            backgroundColor: isDarkMode === 'dark' ? '#010101' : '#ffffff',
+          },
         }}
         initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
         {/**
          * Checks if users state is persisted in the secure storage
          * and based on that it'll either display the auth screens
@@ -44,6 +49,7 @@ const RootNavigation = (props: Props) => {
           </>
         ) : (
           <>
+            <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
           </>

@@ -8,6 +8,11 @@ import {useNavigation} from '@react-navigation/native';
 
 type Props = {};
 
+type loginFormTypes = {
+  email: string;
+  password: string;
+};
+
 const LoginFormSchema = Yup.object().shape({
   email: Yup.string()
     .required('This field is required.')
@@ -24,8 +29,16 @@ const LoginScreen = (props: Props) => {
       password: '',
     },
     validationSchema: LoginFormSchema,
-    onSubmit: values => {},
+    onSubmit: values => {
+      handleLogin(values);
+    },
   });
+
+  const handleLogin = (values: loginFormTypes) => {};
+
+  const handleGoogleLogin = () => {};
+
+  const handleFacebookLogin = () => {};
 
   return (
     <View style={tw`p-4`}>
@@ -98,7 +111,8 @@ const LoginScreen = (props: Props) => {
           <View style={tw`mt-5`}>
             <Button
               mode="contained"
-              style={tw`py-1 rounded-full`}
+              style={tw`rounded-full`}
+              contentStyle={tw`py-1`}
               icon={'login'}
               onPress={loginForm.handleSubmit}>
               Login
@@ -114,6 +128,38 @@ const LoginScreen = (props: Props) => {
               }}>
               Need access? Signup.
             </Text>
+          </View>
+          {/* Social Signin */}
+          <View style={tw`flex-row items-center my-4`}>
+            <View style={tw`border-b flex-1`}></View>
+            <Text style={tw`px-2`}>OR</Text>
+            <View style={tw`border-b flex-1`}></View>
+          </View>
+          {/* Google Login button */}
+          <View>
+            <Button
+              buttonColor="#ea4335"
+              textColor="white"
+              mode="contained"
+              style={tw`rounded-full`}
+              contentStyle={tw`py-1`}
+              icon={'google'}
+              onPress={handleGoogleLogin}>
+              Continue with Google
+            </Button>
+          </View>
+          {/* Facebook Login button */}
+          <View style={tw`mt-5`}>
+            <Button
+              buttonColor="#4267B2"
+              mode="contained"
+              style={tw`rounded-full`}
+              contentStyle={tw`py-1`}
+              icon={'facebook'}
+              textColor="white"
+              onPress={handleFacebookLogin}>
+              Continue with Facebook
+            </Button>
           </View>
         </View>
       </View>
