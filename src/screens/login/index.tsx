@@ -24,9 +24,7 @@ const LoginScreen = (props: Props) => {
       password: '',
     },
     validationSchema: LoginFormSchema,
-    onSubmit: values => {
-      console.info(values);
-    },
+    onSubmit: values => {},
   });
 
   return (
