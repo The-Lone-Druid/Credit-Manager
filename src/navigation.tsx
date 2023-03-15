@@ -21,7 +21,9 @@ const RootNavigation = (props: Props) => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-        }}>
+        }}
+        initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
         {/**
          * Checks if users state is persisted in the secure storage
          * and based on that it'll either display the auth screens
@@ -42,7 +44,6 @@ const RootNavigation = (props: Props) => {
           </>
         ) : (
           <>
-            <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
           </>

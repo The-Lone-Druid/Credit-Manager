@@ -11,12 +11,14 @@
     "build-android-for-store:release": "cd android && gradlew bundleRelease",
     "android:install-debug": "adb install android/app/build/outputs/apk/debug/app-debug.apk",
     "android:install-release": "adb install android/app/build/outputs/apk/release/app-release.apk",
+    "android:signing-certificate": "cd android && gradlew signingReport",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^17.3.2",
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.7",
     "@reduxjs/toolkit": "^1.9.1",
@@ -26,6 +28,7 @@
     "react-native-paper": "^5.4.0",
     "react-native-safe-area-context": "^4.4.1",
     "react-native-screens": "^3.18.2",
+    "react-native-svg": "^13.8.0",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
