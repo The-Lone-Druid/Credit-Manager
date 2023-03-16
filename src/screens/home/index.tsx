@@ -3,6 +3,7 @@ import React from 'react';
 import tw from 'twrnc';
 import {Appbar, Button, Text} from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 type Props = {};
 
@@ -33,6 +34,7 @@ const HomeScreen = (props: Props) => {
           style={tw`mt-4`}
           onPress={() => {
             auth().signOut();
+            GoogleSignin.signOut();
           }}>
           Logout
         </Button>

@@ -66,8 +66,8 @@ const RootNavigation = (props: Props) => {
             <Stack.Screen name="Signup" component={SignupScreen} />
             <Stack.Screen name="VerifyEmail" component={VerifyEmailScreen} />
             <Stack.Screen
-              name="ResetPassword"
-              component={ResetPasswordScreen}
+              name="ForgotPassword"
+              component={ForgotPasswordScreen}
             />
             <Stack.Screen
               name="ResetPassword"

@@ -13,7 +13,10 @@ import tw from 'twrnc';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useNavigation} from '@react-navigation/native';
-import {signinUserWithEmailAndPassword} from '../../services/firebase/authService';
+import {
+  continueWithGoogle,
+  signinUserWithEmailAndPassword,
+} from '../../services/firebase/authService';
 import auth from '@react-native-firebase/auth';
 import BasicLoader from '../../components/Loaders';
 
@@ -60,7 +63,15 @@ const LoginScreen = (props: Props) => {
     );
   };
 
-  const handleGoogleAuth = async () => {};
+  const handleGoogleAuth = async () => {
+    await continueWithGoogle(
+      auth,
+      isLoading,
+      setIsLoading,
+      loadingMessage,
+      setLoadingMessage,
+    );
+  };
 
   const handleFacebookAuth = async () => {};
 

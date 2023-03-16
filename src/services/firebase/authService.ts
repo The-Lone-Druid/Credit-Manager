@@ -1,5 +1,6 @@
 import {ReactNativeFirebase} from '@react-native-firebase/app';
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {Alert} from 'react-native';
 import {loginFormTypes} from '../../screens/login';
 import {signupFormTypes} from '../../screens/signup';
@@ -106,7 +107,49 @@ export const createUserWithEmailAndPassword = async (
     });
 };
 
-export const continueWithGoogle = async () => {};
+/**
+ * Continue with google.
+ *
+ * @param auth
+ * @param isLoading
+ * @param setIsLoading
+ * @param loadingMessage
+ * @param setLoadingMessage
+ * @returns
+ */
+export const continueWithGoogle = async (
+  auth: ReactNativeFirebase.FirebaseModuleWithStaticsAndApp<
+    FirebaseAuthTypes.Module,
+    FirebaseAuthTypes.Statics
+  >,
+  isLoading: boolean,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  loadingMessage: string,
+  setLoadingMessage: React.Dispatch<React.SetStateAction<string>>,
+) => {
+  setIsLoading(true);
+  setLoadingMessage('Continuing with Google...');
+
+  await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+  const {idToken} = await GoogleSignin.signIn();
+
+  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+  setIsLoading(false);
+
+  return auth()
+    .signInWithCredential(googleCredential)
+    .then(data => {
+      setIsLoading(false);
+
+      return data;
+    })
+    .catch((error: any) => {
+      setIsLoading(false);
+
+      console.log(error);
+    });
+};
 
 export const continueWithFacebook = async () => {};
 

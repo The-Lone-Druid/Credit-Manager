@@ -20,6 +20,12 @@ import {
 import {store} from './src/cache/store';
 import {useColorScheme} from 'react-native';
 import {ThemeProp} from 'react-native-paper/lib/typescript/src/types';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+
+GoogleSignin.configure({
+  webClientId:
+    '240090015760-431e6cl7uuqpms5gir7ls6vpvqk9u54d.apps.googleusercontent.com',
+});
 
 const App = () => {
   const isDarkMode = useColorScheme();
