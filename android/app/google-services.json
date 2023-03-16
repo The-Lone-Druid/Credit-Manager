@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "240090015760-3d49njr2snjds93r1m5gvbuvs9t4atkh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.creditManager",
+            "certificate_hash": "c71e44612a266d69c7e3dcaf420cebaf57ebb63e"
+          }
+        },
+        {
           "client_id": "240090015760-j4agc8pkd3m77ttcttrj20alr15aleot.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -22,7 +30,7 @@
           }
         },
         {
-          "client_id": "240090015760-431e6cl7uuqpms5gir7ls6vpvqk9u54d.apps.googleusercontent.com",
+          "client_id": "240090015760-pru0ept57jg153162u8ek2105sshcv4g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
