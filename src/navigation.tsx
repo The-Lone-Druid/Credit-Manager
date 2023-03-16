@@ -13,6 +13,7 @@ import SignupScreen from './screens/signup';
 import {onAuthStateChanged} from './services/firebase/authService';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import BasicLoader from './components/Loaders';
+import VerifyEmailScreen from './screens/verify-email';
 
 type Props = {};
 
@@ -63,9 +64,10 @@ const RootNavigation = (props: Props) => {
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Signup" component={SignupScreen} />
+            <Stack.Screen name="VerifyEmail" component={VerifyEmailScreen} />
             <Stack.Screen
-              name="ForgotPassword"
-              component={ForgotPasswordScreen}
+              name="ResetPassword"
+              component={ResetPasswordScreen}
             />
             <Stack.Screen
               name="ResetPassword"
