@@ -10,23 +10,48 @@ import ProfileScreen from './screens/profile';
 import ResetPasswordScreen from './screens/reset-password';
 import SettingsScreen from './screens/settings';
 import SignupScreen from './screens/signup';
+import {onAuthStateChanged} from './services/firebase/authService';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import BasicLoader from './components/Loaders';
 
 type Props = {};
 
 const Stack = createNativeStackNavigator();
 
 const RootNavigation = (props: Props) => {
-  const [state] = React.useState<null | any>();
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [loadingMessage, setLoadingMessage] = React.useState('Loading...');
+  const [user, setUser] = React.useState<FirebaseAuthTypes.User | null>(null);
   const isDarkMode = useColorScheme();
+
+  React.useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(user =>
+      onAuthStateChanged(
+        user,
+        setUser,
+        isLoading,
+        setIsLoading,
+        setLoadingMessage,
+      ),
+    );
+
+    return subscriber;
+  }, []);
 
   return (
     <SafeAreaView style={tw`flex-1`}>
+      <BasicLoader
+        visible={isLoading}
+        setVisible={setIsLoading}
+        loadingMessage={loadingMessage}
+      />
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
           contentStyle: {
             backgroundColor: isDarkMode === 'dark' ? '#010101' : '#ffffff',
           },
+          animation: 'fade',
         }}
         initialRouteName="Home">
         {/**
@@ -34,7 +59,7 @@ const RootNavigation = (props: Props) => {
          * and based on that it'll either display the auth screens
          * or it'll display the authenticated screens.
          */}
-        {!state?.userToken ? (
+        {!user ? (
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Signup" component={SignupScreen} />

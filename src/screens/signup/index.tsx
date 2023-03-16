@@ -5,10 +5,13 @@ import * as Yup from 'yup';
 import {useNavigation} from '@react-navigation/native';
 import {useFormik} from 'formik';
 import {Button, Text, TextInput, useTheme} from 'react-native-paper';
+import {createUserWithEmailAndPassword} from '../../services/firebase/authService';
+import auth from '@react-native-firebase/auth';
+import BasicLoader from '../../components/Loaders';
 
 type Props = {};
 
-type signupFormTypes = {
+export type signupFormTypes = {
   email: string;
   password: string;
   confirmPassword: string;
@@ -27,6 +30,9 @@ const SignupFormSchema = Yup.object().shape({
 const SignupScreen = (props: Props) => {
   const theme = useTheme();
   const navigation: any = useNavigation();
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [loadingMessage, setLoadingMessage] = React.useState('Loading...');
+
   const signupForm = useFormik({
     initialValues: {
       email: '',
@@ -35,18 +41,32 @@ const SignupScreen = (props: Props) => {
     },
     validationSchema: SignupFormSchema,
     onSubmit: values => {
-      console.info(values);
+      handleSignup(values);
     },
   });
 
-  const handleSignup = (values: signupFormTypes) => {};
+  const handleSignup = async (values: signupFormTypes) => {
+    await createUserWithEmailAndPassword(
+      auth,
+      values,
+      isLoading,
+      setIsLoading,
+      loadingMessage,
+      setLoadingMessage,
+    );
+  };
 
-  const handleGoogleLogin = () => {};
+  const handleGoogleAuth = async () => {};
 
-  const handleFacebookLogin = () => {};
+  const handleFacebookAuth = async () => {};
 
   return (
     <View style={tw`p-4`}>
+      <BasicLoader
+        visible={isLoading}
+        setVisible={setIsLoading}
+        loadingMessage={loadingMessage}
+      />
       <View style={tw`mt-20`}>
         <Text variant="headlineLarge">Signup.</Text>
         <View style={tw`mt-5`}>
@@ -168,7 +188,7 @@ const SignupScreen = (props: Props) => {
               style={tw`rounded-full`}
               contentStyle={tw`py-1`}
               icon={'google'}
-              onPress={handleGoogleLogin}>
+              onPress={handleGoogleAuth}>
               Continue with Google
             </Button>
           </View>
@@ -181,7 +201,7 @@ const SignupScreen = (props: Props) => {
               contentStyle={tw`py-1`}
               icon={'facebook'}
               textColor="white"
-              onPress={handleFacebookLogin}>
+              onPress={handleFacebookAuth}>
               Continue with Facebook
             </Button>
           </View>

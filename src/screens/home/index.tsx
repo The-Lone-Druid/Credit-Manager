@@ -1,8 +1,8 @@
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import Svg, {G, Rect, Path, Defs, Text as SVGText} from 'react-native-svg';
 import tw from 'twrnc';
-import {Appbar, Text} from 'react-native-paper';
+import {Appbar, Button, Text} from 'react-native-paper';
+import auth from '@react-native-firebase/auth';
 
 type Props = {};
 
@@ -26,6 +26,16 @@ const HomeScreen = (props: Props) => {
             <Text variant="bodyMedium">2,455</Text>
           </View>
         </View>
+        {/* Logout */}
+        <Button
+          mode="contained"
+          icon="logout"
+          style={tw`mt-4`}
+          onPress={() => {
+            auth().signOut();
+          }}>
+          Logout
+        </Button>
       </View>
     </View>
   );

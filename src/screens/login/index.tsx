@@ -36,9 +36,9 @@ const LoginScreen = (props: Props) => {
 
   const handleLogin = (values: loginFormTypes) => {};
 
-  const handleGoogleLogin = () => {};
+  const handleGoogleAuth = () => {};
 
-  const handleFacebookLogin = () => {};
+  const handleFacebookAuth = () => {};
 
   return (
     <View style={tw`p-4`}>
@@ -144,7 +144,7 @@ const LoginScreen = (props: Props) => {
               style={tw`rounded-full`}
               contentStyle={tw`py-1`}
               icon={'google'}
-              onPress={handleGoogleLogin}>
+              onPress={handleGoogleAuth}>
               Continue with Google
             </Button>
           </View>
@@ -157,7 +157,7 @@ const LoginScreen = (props: Props) => {
               contentStyle={tw`py-1`}
               icon={'facebook'}
               textColor="white"
-              onPress={handleFacebookLogin}>
+              onPress={handleFacebookAuth}>
               Continue with Facebook
             </Button>
           </View>
