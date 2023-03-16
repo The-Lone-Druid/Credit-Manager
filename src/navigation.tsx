@@ -49,7 +49,7 @@ const RootNavigation = (props: Props) => {
         screenOptions={{
           headerShown: false,
           contentStyle: {
-            backgroundColor: isDarkMode === 'dark' ? '#010101' : '#ffffff',
+            backgroundColor: isDarkMode === 'dark' ? '#363636' : '#ffffff',
           },
           animation: 'fade',
         }}
