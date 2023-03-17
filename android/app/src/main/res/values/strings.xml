@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Credit Manager</string>
+    <string name="facebook_app_id">2330909423755010</string>
+    <string name="facebook_client_token">feb896db8572262b357e846cb7653c7c</string>
 </resources>

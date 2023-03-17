@@ -2,6 +2,7 @@ import {ReactNativeFirebase} from '@react-native-firebase/app';
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {Alert} from 'react-native';
+import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import {loginFormTypes} from '../../screens/login';
 import {signupFormTypes} from '../../screens/signup';
 
@@ -90,17 +91,17 @@ export const createUserWithEmailAndPassword = async (
     .then(() => {
       setIsLoading(false);
 
-      console.log('User account created & signed in!');
+      Alert.alert('User account created & signed in!');
     })
     .catch((error: any) => {
       setIsLoading(false);
 
       if (error.code === 'auth/email-already-in-use') {
-        console.log('That email address is already in use!');
+        Alert.alert('Email address is already in use!');
       }
 
       if (error.code === 'auth/invalid-email') {
-        console.log('That email address is invalid!');
+        Alert.alert('Email address is invalid!');
       }
 
       console.error(error);
@@ -128,21 +129,19 @@ export const continueWithGoogle = async (
   setLoadingMessage: React.Dispatch<React.SetStateAction<string>>,
 ) => {
   setIsLoading(true);
-  setLoadingMessage('Continuing with Google...');
+  setLoadingMessage('Please wait...');
 
   await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
   const {idToken} = await GoogleSignin.signIn();
 
   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
-  setIsLoading(false);
+  setLoadingMessage('Signing in...');
 
   return auth()
     .signInWithCredential(googleCredential)
-    .then(data => {
+    .then(() => {
       setIsLoading(false);
-
-      return data;
     })
     .catch((error: any) => {
       setIsLoading(false);
@@ -151,7 +150,46 @@ export const continueWithGoogle = async (
     });
 };
 
-export const continueWithFacebook = async () => {};
+export const continueWithFacebook = async (
+  auth: ReactNativeFirebase.FirebaseModuleWithStaticsAndApp<
+    FirebaseAuthTypes.Module,
+    FirebaseAuthTypes.Statics
+  >,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setLoadingMessage: React.Dispatch<React.SetStateAction<string>>,
+) => {
+  setIsLoading(true);
+  setLoadingMessage('Please wait...');
+
+  const result = await LoginManager.logInWithPermissions([
+    'public_profile',
+    'email',
+  ]);
+
+  if (result.isCancelled) {
+    setIsLoading(false);
+    Alert.alert('User cancelled the login process');
+  }
+
+  const data: AccessToken | any = await AccessToken.getCurrentAccessToken();
+
+  if (!data) {
+    setIsLoading(false);
+    Alert.alert('Something went wrong obtaining access token');
+  }
+
+  const facebookCredential = auth.FacebookAuthProvider.credential(
+    data.accessToken,
+  );
+
+  setLoadingMessage('Signing in...');
+  return auth()
+    .signInWithCredential(facebookCredential)
+    .catch(err => {
+      setIsLoading(false);
+      console.log(err);
+    });
+};
 
 /**
  * User auth state change detector which helps you identify and

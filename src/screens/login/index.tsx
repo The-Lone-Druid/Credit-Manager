@@ -14,6 +14,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useNavigation} from '@react-navigation/native';
 import {
+  continueWithFacebook,
   continueWithGoogle,
   signinUserWithEmailAndPassword,
 } from '../../services/firebase/authService';
@@ -73,7 +74,9 @@ const LoginScreen = (props: Props) => {
     );
   };
 
-  const handleFacebookAuth = async () => {};
+  const handleFacebookAuth = async () => {
+    await continueWithFacebook(auth, setIsLoading, setLoadingMessage);
+  };
 
   return (
     <KeyboardAvoidingView

@@ -13,7 +13,11 @@ import * as Yup from 'yup';
 import {useNavigation} from '@react-navigation/native';
 import {useFormik} from 'formik';
 import {Button, Text, TextInput, useTheme} from 'react-native-paper';
-import {createUserWithEmailAndPassword} from '../../services/firebase/authService';
+import {
+  continueWithFacebook,
+  continueWithGoogle,
+  createUserWithEmailAndPassword,
+} from '../../services/firebase/authService';
 import auth from '@react-native-firebase/auth';
 import BasicLoader from '../../components/Loaders';
 
@@ -66,9 +70,19 @@ const SignupScreen = (props: Props) => {
     );
   };
 
-  const handleGoogleAuth = async () => {};
+  const handleGoogleAuth = async () => {
+    await continueWithGoogle(
+      auth,
+      isLoading,
+      setIsLoading,
+      loadingMessage,
+      setLoadingMessage,
+    );
+  };
 
-  const handleFacebookAuth = async () => {};
+  const handleFacebookAuth = async () => {
+    await continueWithFacebook(auth, setIsLoading, setLoadingMessage);
+  };
 
   return (
     <KeyboardAvoidingView
